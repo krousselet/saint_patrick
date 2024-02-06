@@ -31,10 +31,12 @@
             </div>
         </div>
         <div v-if="activePage === 1" id="details" v-for="(item, pageDetails) in pages[1].pageContent" :key="pageDetails">
-            <p>{{ item.where }}</p>
-            <p>{{ item.who }}</p>
-            <p>{{ item.price + ' l\'entrée' }}</p>
-            <p>{{ item.activity }}</p>
+            <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-left">
+            <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-right">
+            <p id="p0">{{ item.where }}</p>
+            <p id="p1">{{ item.who }}</p>
+            <p id="p2">{{ item.price + ' l\'entrée' }}</p>
+            <p id="p3">{{ item.activity }}</p>
             <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="leprechaun_playing">
             <div id="groups" class="m-5">
                 <ul id="list">
@@ -80,6 +82,28 @@ export default {
 </script>
 
 <style scoped>
+#clover-left {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    width: 50px;
+    height: 50px;
+    animation: cloverLeft 10s .5s infinite;
+    z-index: 10;
+    opacity: 1;
+}
+
+#clover-right {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: 50px;
+    height: 50px;
+    animation: cloverRight 10s .5s infinite;
+    z-index: 10;
+    opacity: 1;
+}
+
 /* MEDIAS QUERIES */
 @media (min-width: 993px) {
     a {
@@ -165,5 +189,33 @@ p {
 
 .logo {
     cursor: pointer;
+}
+
+#p0 {
+    position: relative;
+    left: -8%;
+    opacity: 0;
+    animation: appear .3s .3s forwards;
+}
+
+#p1 {
+    position: relative;
+    left: 8%;
+    opacity: 0;
+    animation: appear .3s 1.3s forwards;
+}
+
+#p2 {
+    position: relative;
+    left: -5%;
+    opacity: 0;
+    animation: appear .3s 2.3s forwards;
+}
+
+#p3 {
+    position: relative;
+    left: 5%;
+    opacity: 0;
+    animation: appear .3s 3.3s forwards;
 }
 </style>

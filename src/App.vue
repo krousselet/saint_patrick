@@ -72,6 +72,7 @@ export default {
 body {
   background-color: #060606 !important;
   background-color: black !important;
+  height: 100vh;
 }
 
 h1,
@@ -161,10 +162,6 @@ img {
 }
 
 @keyframes moveLeft {
-  0% {
-    position: relative;
-    left: -100%;
-  }
 
   100% {
     left: 0;
@@ -190,6 +187,44 @@ img {
 
   100% {
     top: 0;
+  }
+}
+
+@keyframes cloverLeft {
+  25% {
+    left: 20%;
+  }
+
+  50% {
+    left: 5%;
+  }
+
+  75% {
+    left: 15%;
+  }
+
+  100% {
+    top: 100%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cloverRight {
+  25% {
+    right: 20%;
+  }
+
+  50% {
+    right: 5%;
+  }
+
+  75% {
+    right: 15%;
+  }
+
+  100% {
+    top: 75%;
+    transform: rotate(360deg);
   }
 }
 </style>
