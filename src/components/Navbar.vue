@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-body-transparent">
         <div class="container-fluid">
-            <img src="#" alt="logo" srcset="">
+            <img :src="logo" alt="logo skulldarts" id="logo-skulldarts" @click.prevent="openLogoUrl(logoUrl)">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,13 +19,29 @@
     </nav>
     <div id="container">
         <h1 class="m-5">{{ pages[activePage].pageTitle }}</h1>
-        <div id="details" v-for="(item, pageDetails) in pages[activePage].pageContent" :key="pageDetails">
+        <div v-if="activePage === 0" id="home" v-for="(item, pageIndex) in pages[0].pageContent" :key="pageIndex">
             <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts">
             <p class="m-5">{{ item.heading }}</p>
-            <p>{{ item.text }}</p>
+            <p class="m-5">{{ item.text }}</p>
+            <div id="groups">
+                <ul id="list">
+                    <li v-for="group in groups" :key="group.url"><img class="img-fluid logo" :src="group.imageUrl"
+                            :alt="'image d\'un logo'" @click.prevent="openNewTab(group.url)">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div v-if="activePage === 1" id="details" v-for="(item, pageDetails) in pages[1].pageContent" :key="pageDetails">
+            <p>{{ item.where }}</p>
+            <p>{{ item.who }}</p>
+            <p>{{ item.price + ' l\'entrée' }}</p>
+            <p>{{ item.activity }}</p>
+            <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="leprechaun_playing">
             <div id="groups" class="m-5">
                 <ul id="list">
-                    <li v-for="group in groups"><img class="img-fluid" :src="group.imageUrl" alt="" srcset=""></li>
+                    <li v-for="group in groups" :key="group.url"><img class="img-fluid logo m-2" :src="group.imageUrl"
+                            :alt="'image d\'un logo'" @click.prevent="openNewTab(group.url)">
+                    </li>
                 </ul>
             </div>
         </div>
@@ -34,15 +50,17 @@
 
 <script>
 export default {
-    emits: ['toggle-hamburger'],
     methods: {
-        toggleHamburger() {
-            this.$emit('toggle-hamburger');
+        openNewTab(url) {
+            window.open(url, '_blank');
+        },
+        openLogoUrl(logoUrl) {
+            window.open(logoUrl, '_blank');
         }
     },
     props: {
         activePage: Number,
-        isHamburgerActive: Boolean,
+        logo: String,
         groups: {
             type: Object,
             default(rawProps) {
@@ -62,23 +80,62 @@ export default {
 </script>
 
 <style scoped>
-.active {
-    color: gold !important;
+#logo-skulldarts {
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-#irish_darts {
-    box-shadow: 0 0 10px green;
+a {
+    transition: .5s ease !important;
 }
+
+.active {
+    color: gold !important;
+    transition: .5s ease !important;
+    border: 0 !important;
+    border-bottom: 2px solid gold !important;
+}
+
+/* .active #leprechaun_playing {
+    box-shadow: 0 0 10px green;
+} */
 
 #list {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    cursor: default;
 }
 
 #list li img {
     max-width: 200px;
     max-height: 100px;
+}
+
+p {
+    font-size: 24px;
+}
+
+#details {
+    cursor: default;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.5);
+    transition: .3s ease;
+}
+
+
+
+#leprechaun_playing:hover {
+    transform: scale(.8) rotate(15deg);
+    transition: .3s ease;
 }
 </style>
