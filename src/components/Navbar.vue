@@ -18,11 +18,10 @@
         </div>
     </nav>
     <div id="container">
-        <h1 class="m-5">{{ pages[activePage].pageTitle }}</h1>
+        <h1 id="title" class="m-5">{{ pages[activePage].pageTitle }}</h1>
         <div v-if="activePage === 0" id="home" v-for="(item, pageIndex) in pages[0].pageContent" :key="pageIndex">
             <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts">
-            <p class="m-5">{{ item.heading }}</p>
-            <p class="m-5">{{ item.text }}</p>
+            <p class="m-5" id="first-p">{{ item.heading + ' ' + item.text }}</p>
             <div id="groups">
                 <ul id="list">
                     <li v-for="group in groups" :key="group.url"><img class="img-fluid logo" :src="group.imageUrl"
@@ -60,6 +59,7 @@ export default {
     },
     props: {
         activePage: Number,
+        logoUrl: String,
         logo: String,
         groups: {
             type: Object,
@@ -80,6 +80,27 @@ export default {
 </script>
 
 <style scoped>
+/* MEDIAS QUERIES */
+@media (min-width: 993px) {
+    a {
+        transition: .5s ease !important;
+    }
+
+    .logo:hover {
+        transform: scale(1.5);
+        transition: .3s ease;
+    }
+
+
+
+    #leprechaun_playing:hover {
+        transform: scale(.8) rotate(15deg);
+        transition: .3s ease;
+    }
+}
+
+/* HEADER */
+
 #logo-skulldarts {
     max-height: 50px;
     max-width: 50px;
@@ -87,9 +108,7 @@ export default {
     cursor: pointer;
 }
 
-a {
-    transition: .5s ease !important;
-}
+
 
 .active {
     color: gold !important;
@@ -97,10 +116,6 @@ a {
     border: 0 !important;
     border-bottom: 2px solid gold !important;
 }
-
-/* .active #leprechaun_playing {
-    box-shadow: 0 0 10px green;
-} */
 
 #list {
     display: flex;
@@ -115,27 +130,40 @@ a {
     max-height: 100px;
 }
 
+#title {
+    position: relative;
+    left: -100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    animation: appear .3s .3s forwards ease, colorize 1.2s .7s forwards ease, moveLeft .7s .5s forwards ease;
+}
+
+
+
 p {
     font-size: 24px;
 }
 
+#first-p {
+    position: relative;
+    right: 100%;
+    animation: appear .3s .3s forwards ease, colorize 1.2s .7s forwards ease, moveRight .5s .8s forwards ease;
+}
+
+#second-p {
+    position: relative;
+    bottom: 500px;
+    animation: appear .3s .3s forwards ease, colorize 1.2s .7s forwards ease, moveleft .5s .9s forwards ease;
+}
+
 #details {
     cursor: default;
+
 }
 
 .logo {
     cursor: pointer;
-}
-
-.logo:hover {
-    transform: scale(1.5);
-    transition: .3s ease;
-}
-
-
-
-#leprechaun_playing:hover {
-    transform: scale(.8) rotate(15deg);
-    transition: .3s ease;
 }
 </style>

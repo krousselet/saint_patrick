@@ -41,7 +41,7 @@ export default {
             {
               imageUrl: require('@/assets/irish_darts_bis_1024x1024.svg'),
               heading: 'Skull Darts 71 vous propose',
-              text: 'Une soirée inoubliable !',
+              text: 'une soirée inoubliable !',
             }
           ],
         },
@@ -78,6 +78,9 @@ h1,
 p {
   font-family: 'Irish Grover', system-ui;
   color: gold;
+  opacity: 0;
+  animation: appear .3s .6s forwards ease;
+  cursor: default;
 }
 
 li {
@@ -87,6 +90,8 @@ li {
 img {
   border-radius: 7px;
   transition: .3s ease;
+  opacity: 0;
+  animation: appear .3s .3s forwards ease;
 }
 
 #app {
@@ -100,5 +105,91 @@ img {
 
 #details p {
   font-size: 24px;
+}
+
+/* SCROLLBAR Y */
+
+/* Customizes the whole scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Scrollbar width */
+}
+
+/* Customizes the scrollbar track (the part the thumb slides along) */
+::-webkit-scrollbar-track {
+  background: rgba(0, 128, 0, 0.452);
+  /* Track color */
+}
+
+/* Customizes the scrollbar thumb (the part you drag) */
+::-webkit-scrollbar-thumb {
+  background: green;
+  /* Thumb color */
+}
+
+/* Changes the thumb color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: gold;
+  /* Thumb hover color */
+}
+
+
+/* ANIMATIONS */
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes colorize {
+  0% {
+    color: gold;
+  }
+
+  50% {
+    color: green;
+  }
+
+  100% {
+    color: gold;
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    position: relative;
+    left: -100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    position: relative;
+    right: -100%;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes moveTop {
+  0% {
+    position: relative;
+    bottom: 500px;
+  }
+
+  100% {
+    top: 0;
+  }
 }
 </style>
