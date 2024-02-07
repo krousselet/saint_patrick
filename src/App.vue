@@ -1,5 +1,6 @@
 <template>
-  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl"></Navbar>
+  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl" :tables="tables">
+  </Navbar>
 </template>
 
 <script>
@@ -29,6 +30,14 @@ export default {
           url: 'https://www.facebook.com/profile.php?id=100089758185054',
         },
       ],
+      tables: {
+        0: '0',
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '',
+      },
       pages: [
         // HOME PAGE
         {
@@ -54,15 +63,17 @@ export default {
           pageTitle: 'Informations :',
           pageContent: [
             {
-              imageUrl: require('@/assets/leprechaun_playing.webp'),
+              // imageUrl: require('@/assets/leprechaun_playing.webp'),
               where: 'Salle des fêtes de BELLEVESVRE',
+              when: 'Dès 19h !',
               who: 'Skull Darts 71',
               price: '5 euros',
               activity: 'Jouez et gagnez une boisson gratuite !'
             }
           ],
         }
-      ]
+      ],
+      pageDetails: 0,
     }
   }
 }
@@ -131,7 +142,6 @@ img {
 /* Changes the thumb color on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: gold;
-  /* Thumb hover color */
 }
 
 

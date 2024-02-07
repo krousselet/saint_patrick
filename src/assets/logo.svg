@@ -1,8 +1,8 @@
 <svg width="196" height="207" viewBox="0 0 196 207" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g filter="url(#filter0_d_23_33)">
 <rect x="5" y="1" width="186" height="197" fill="url(#pattern0)"/>
-<path d="M100.489 4.49997C46.4659 2.47318 3.38027 55.3633 7.49186 103H5V1H191V103H189.508C188.942 53.7156 159.789 8.50638 100.489 4.49997Z" fill="black" stroke="white"/>
-<path d="M100.489 194.74C46.4659 196.628 3.38027 147.368 7.49186 103H5V198H191V103H189.508C188.942 148.902 159.789 191.009 100.489 194.74Z" fill="black" stroke="white"/>
+<path d="M100.5 8.5C48.9477 5.63778 8.8565 54.1084 10 103H5V1H191V103H186C184.816 57.7245 156.765 13.8375 100.5 8.5Z" fill="black" stroke="black"/>
+<path d="M99.5 190.5C41.4156 191.789 11.2591 140.859 10 103H5V198H191V103H186.5C183.198 143.217 157.584 189.211 99.5 190.5Z" fill="black" stroke="black"/>
 </g>
 <defs>
 <filter id="filter0_d_23_33" x="0.5" y="0.5" width="195" height="206" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
