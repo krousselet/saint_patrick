@@ -1,5 +1,5 @@
 <template>
-  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl" :tables="tables">
+  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl" :index="index">
   </Navbar>
 </template>
 
@@ -13,6 +13,7 @@ export default {
   },
   data() {
     return {
+      index: 0,
       logo: require('@/assets/logo.svg'),
       logoUrl: 'https://www.facebook.com/p/Skull-Darts-71-100091328505582/?paipv=0&eav=AfbEQcnK0hrl5AlWq-9Fz-R8o1uA_m8gPtoaNvWGt4tS05H5GpBvBsKNRuX0Zbg9LJQ&_rdr',
       activePage: 0,
@@ -30,14 +31,14 @@ export default {
           url: 'https://www.facebook.com/profile.php?id=100089758185054',
         },
       ],
-      tables: {
-        0: '0',
-        1: '1',
-        2: '2',
-        3: '3',
-        4: '4',
-        5: '',
-      },
+      // tables: {
+      //   0: '0',
+      //   1: '1',
+      //   2: '2',
+      //   3: '3',
+      //   4: '4',
+      //   5: '5',
+      // },
       pages: [
         // HOME PAGE
         {
@@ -68,7 +69,8 @@ export default {
               when: 'Dès 19h !',
               who: 'Skull Darts 71',
               price: '5 euros',
-              activity: 'Jouez et gagnez une boisson gratuite !'
+              activity: 'Jouez et gagnez une boisson gratuite !',
+              bonus: 'Un kilt = une boisson offerte !'
             }
           ],
         }
@@ -172,6 +174,9 @@ img {
 }
 
 @keyframes moveLeft {
+  0% {
+    left: -50%;
+  }
 
   100% {
     left: 0;
@@ -180,23 +185,11 @@ img {
 
 @keyframes moveRight {
   0% {
-    position: relative;
-    right: -100%;
+    right: -50%;
   }
 
   100% {
     right: 0;
-  }
-}
-
-@keyframes moveTop {
-  0% {
-    position: relative;
-    bottom: 500px;
-  }
-
-  100% {
-    top: 0;
   }
 }
 

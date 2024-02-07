@@ -31,12 +31,12 @@
                 </ul>
             </div>
         </div>
-        <div v-if="activePage === 1" id="details" v-for="(item, pageDetails) in pages[1].pageContent" :key="pageDetails">
+        <div v-if="activePage === 1" id="details">
             <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-left">
             <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-right">
-            <div class="container" v-for="(table, pageTable) in tables" :key="pageTable">
-                <p v-for="(value, key) in pages[1].pageContent[pageTable]" :key="key" :id="`p${table[pageTable]}`">
-                    {{ value }}
+            <div class="container">
+                <p v-for="(item, index) in pages[1].pageContent[index]" :key="index" :id="index">
+                    {{ item }}
                 </p>
             </div>
             <img class="img-fluid" :src="pages[1].link.url" :alt="'image d\'un logo'" id="leprechaun_playing">
@@ -59,14 +59,16 @@ export default {
         },
         openLogoUrl(logoUrl) {
             window.open(logoUrl, '_blank');
-        }
+        },
     },
+
     props: {
         activePage: Number,
         logoUrl: String,
         logo: String,
         tables: Object,
         pageDetails: Number,
+        index: Number,
         groups: {
             type: Object,
             default(rawProps) {
@@ -125,55 +127,13 @@ export default {
         transform: scale(.8) rotate(15deg);
         transition: .3s ease;
     }
-
-    #p0 {
-        position: relative;
-        left: -8%;
-        opacity: 0;
-        animation: appear .3s .3s forwards moveLeft .5s .3s forwards ease !important;
-
-    }
-
-    #p1 {
-        position: relative;
-        left: 8%;
-        opacity: 0;
-        animation: appear .3s 1.3s forwards moveRight .5s 1.3s forwards ease;
-    }
-
-    #p2 {
-        position: relative;
-        left: -5%;
-        opacity: 0;
-        animation: appear .3s 2.3s forwards moveLeft .5s 2.3s forwards ease;
-    }
-
-    #p3 {
-        position: relative;
-        left: 5%;
-        opacity: 0;
-        animation: appear .3s 3.3s forwards moveRight .5s 3.3s forwards ease;
-    }
-
-    #p0,
-    #p1,
-    #p2,
-    #p3 {
-        overflow-x: hidden;
-    }
 }
 
 /* HEADER */
 
-#hamburger {
-    height: 75px !important;
-    width: 75px m !important;
-}
-
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(25, 135, 84, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    height: 75px !important;
-    width: 75px m !important;
+
 }
 
 #logo-skulldarts {
@@ -235,8 +195,6 @@ p {
 
 #details {
     cursor: default;
-    max-width: 100vw;
-    margin: 0 auto;
 
 }
 
@@ -244,23 +202,42 @@ p {
     cursor: pointer;
 }
 
-#p0 {
-    opacity: 0;
-    animation: appear .3s .3s forwards moveLeft .5s .3s forwards ease;
+#where {
+
+    animation: appear .3s .3s forwards, moveLeft .5s .3s forwards ease, colorize .5s .3s forwards ease;
 }
 
-#p1 {
-    opacity: 0;
-    animation: appear .3s 1.3s forwards moveRight .5s .3s forwards ease;
+#when {
+
+    animation: appear .3s 1.3s forwards, moveRight .5s 1.3s forwards ease, colorize .5s 1.3s forwards ease;
 }
 
-#p2 {
-    opacity: 0;
-    animation: appear .3s 2.3s forwards moveLeft .5s .3s forwards ease;
+#who {
+
+    animation: appear .3s 2.3s forwards, moveLeft .5s 2.3s forwards ease, colorize .5s 2.3s forwards ease;
 }
 
-#p3 {
+#price {
+    animation: appear .3s 3.3s forwards, moveRight .5s 3.3s forwards ease, colorize .5s 3.3s forwards ease;
+}
+
+#activity {
+    animation: appear .3s 4.3s forwards, moveLeft .5s 4.3s forwards ease, colorize .5s 4.3s forwards ease;
+}
+
+#bonus {
+    animation: appear .3s 5.3s forwards, moveRight .5s 5.3s forwards ease, colorize .5s 5.3s forwards ease;
+}
+
+#where,
+#when,
+#who,
+#price,
+#activity,
+#bonus {
+    overflow-x: hidden;
+    position: relative;
     opacity: 0;
-    animation: appear .3s 3.3s forwards moveRight .5s .3s forwards ease;
+    transition: .3s ease;
 }
 </style>
