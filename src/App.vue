@@ -148,6 +148,12 @@ img {
   background: gold;
 }
 
+/* BOOTSTRAP CUSTOM MADE CLASS FLUID */
+.video-fluid {
+  max-width: 90%;
+  height: auto;
+}
+
 
 /* ANIMATIONS */
 

@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-body-transparent">
-        <div class="container-fluid justify-content-center">
+        <div class="container-fluid">
             <img :src="logo" alt="logo skulldarts" id="logo-skulldarts" @click.prevent="openLogoUrl(logoUrl)">
             <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -22,7 +22,7 @@
         <h1 id="title" class="m-5">{{ pages[activePage].pageTitle }}</h1>
         <div v-if="activePage === 0" id="home" v-for="(item, pageIndex) in pages[0].pageContent" :key="pageIndex">
             <!-- <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts"> -->
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted playsinline class="video-fluid">
                 <source :src="item.videoUrl" type="video/mp4">
                 Votre navigateur ne supporte pas cette video.
             </video>
