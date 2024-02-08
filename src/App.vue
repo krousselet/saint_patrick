@@ -49,7 +49,8 @@ export default {
           pageTitle: 'Saint Patrick\'s night party',
           pageContent: [
             {
-              imageUrl: require('@/assets/irish_darts_bis_1024x1024.svg'),
+              // imageUrl: require('@/assets/irish_darts_bis_1024x1024.svg'),
+              videoUrl: require('@/assets/irish_darts_bis_1024x1024_png_animation.mp4'),
               heading: 'Skull Darts 71 vous propose',
               text: 'une soirée inoubliable !',
             }
@@ -66,11 +67,12 @@ export default {
             {
               // imageUrl: require('@/assets/leprechaun_playing.webp'),
               where: 'Salle des fêtes de BELLEVESVRE',
+              date: 'Samedi 16 mars',
               when: 'Dès 19h !',
               who: 'Skull Darts 71',
               price: '5 euros',
               activity: 'Jouez et gagnez une boisson gratuite !',
-              bonus: 'Un kilt = une boisson offerte !'
+              bonus: 'Un kilt = une boisson offerte !',
             }
           ],
         }

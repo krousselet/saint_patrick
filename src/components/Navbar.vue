@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-body-transparent">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-center">
             <img :src="logo" alt="logo skulldarts" id="logo-skulldarts" @click.prevent="openLogoUrl(logoUrl)">
             <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -21,7 +21,11 @@
     <div id="container-fluid">
         <h1 id="title" class="m-5">{{ pages[activePage].pageTitle }}</h1>
         <div v-if="activePage === 0" id="home" v-for="(item, pageIndex) in pages[0].pageContent" :key="pageIndex">
-            <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts">
+            <!-- <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts"> -->
+            <video autoplay loop muted playsinline>
+                <source :src="item.videoUrl" type="video/mp4">
+                Votre navigateur ne supporte pas cette video.
+            </video>
             <p class="m-5" id="first-p">{{ item.heading + ' ' + item.text }}</p>
             <div id="groups">
                 <ul id="list">
@@ -69,6 +73,7 @@ export default {
         tables: Object,
         pageDetails: Number,
         index: Number,
+        videoUrl: String,
         groups: {
             type: Object,
             default(rawProps) {
@@ -125,6 +130,7 @@ export default {
 
     #leprechaun_playing:hover {
         transform: scale(.8) rotate(15deg);
+
         transition: .3s ease;
     }
 }
@@ -195,41 +201,52 @@ p {
 
 #details {
     cursor: default;
+    overflow-x: hidden;
 
 }
+
 
 .logo {
     cursor: pointer;
 }
+
+/* // RIGHT NOW ADD THE CLASS THE ITEM VALUE IN THE ARRAY */
 
 #where {
 
     animation: appear .3s .3s forwards, moveLeft .5s .3s forwards ease, colorize .5s .3s forwards ease;
 }
 
-#when {
-
+#date {
     animation: appear .3s 1.3s forwards, moveRight .5s 1.3s forwards ease, colorize .5s 1.3s forwards ease;
 }
 
-#who {
+#when {
 
     animation: appear .3s 2.3s forwards, moveLeft .5s 2.3s forwards ease, colorize .5s 2.3s forwards ease;
 }
 
-#price {
+#who {
+
     animation: appear .3s 3.3s forwards, moveRight .5s 3.3s forwards ease, colorize .5s 3.3s forwards ease;
 }
 
-#activity {
+#price {
     animation: appear .3s 4.3s forwards, moveLeft .5s 4.3s forwards ease, colorize .5s 4.3s forwards ease;
 }
 
-#bonus {
+#activity {
     animation: appear .3s 5.3s forwards, moveRight .5s 5.3s forwards ease, colorize .5s 5.3s forwards ease;
 }
 
+#bonus {
+    animation: appear .3s 6.3s forwards, moveLeft .5s 6.3s forwards ease, colorize .5s 6.3s forwards ease;
+}
+
+
+
 #where,
+#date,
 #when,
 #who,
 #price,
@@ -239,5 +256,9 @@ p {
     position: relative;
     opacity: 0;
     transition: .3s ease;
+}
+
+#leprechaun_playing {
+    animation: appear .5s 7.3s forwards;
 }
 </style>
