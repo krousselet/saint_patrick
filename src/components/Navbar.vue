@@ -2,6 +2,10 @@
     <nav class="navbar navbar-expand-lg bg-body-transparent">
         <div class="container-fluid">
             <img :src="logo" alt="logo skulldarts" id="logo-skulldarts" @click.prevent="openLogoUrl(logoUrl)">
+            <button class="btn" @click="$emit('toggle-play-pause')">
+                <span v-if="!isPlaying" class="btn btn-success">Jouer</span>
+                <span v-else class="btn btn-danger">Pause</span>
+            </button>
             <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -21,8 +25,7 @@
     <div id="container-fluid">
         <h1 id="title" class="m-5">{{ pages[activePage].pageTitle }}</h1>
         <div v-if="activePage === 0" id="home" v-for="(item, pageIndex) in pages[0].pageContent" :key="pageIndex">
-            <!-- <img class="img-fluid" :src="item.imageUrl" :alt="'image d\'un logo'" id="irish_darts"> -->
-            <video autoplay loop muted playsinline class="video-fluid">
+            <video autoplay loop muted playsinline class="video-fluid border-radius">
                 <source :src="item.videoUrl" type="video/mp4">
                 Votre navigateur ne supporte pas cette video.
             </video>
@@ -65,7 +68,13 @@ export default {
             window.open(logoUrl, '_blank');
         },
     },
-
+    computed: {
+        playUrl() {
+            return this.isPlaying
+                ? require('@/assets/pause.png')
+                : require('@/assets/play.png');
+        },
+    },
     props: {
         activePage: Number,
         logoUrl: String,
@@ -74,6 +83,7 @@ export default {
         pageDetails: Number,
         index: Number,
         videoUrl: String,
+        isPlaying: Boolean,
         groups: {
             type: Object,
             default(rawProps) {
@@ -88,11 +98,36 @@ export default {
                 ])
             }
         }
-    }
+    },
+    emits: ['toggle-play-pause']
+    // methods: {
+    //     togglePlayPause() {
+    //         if (this.isPlaying) {
+    //             this.sound.pause();
+    //             this.isPlaying = false;
+    //         } else {
+    //             this.sound.play().then(() => {
+    //                 this.isPlaying = true;
+    //             }).catch(error => console.error("Une erreur est survenue", error));
+    //         }
+    //     },
+    // }
 }
 </script>
 
 <style scoped>
+.btn,
+.btn-success,
+.btn-danger {
+    transition: .5s ease !important;
+}
+
+#play-music {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+}
+
 #clover-left {
     position: absolute;
     left: 20px;
@@ -113,6 +148,10 @@ export default {
     animation: cloverRight 10s .5s infinite alternate;
     z-index: 10;
     opacity: 1;
+}
+
+.border-radius {
+    border-radius: 7px;
 }
 
 /* MEDIAS QUERIES */

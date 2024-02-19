@@ -1,6 +1,8 @@
 <template>
-  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl" :index="index">
+  <Navbar :pages="pages" :activePage="activePage" :groups="groups" :logo="logo" :logoUrl="logoUrl" :index="index"
+    :isPlaying="isPlaying" @toggle-play-pause="togglePlayPause">
   </Navbar>
+  <!-- Toggle button once audio is playing -->
 </template>
 
 <script>
@@ -14,6 +16,8 @@ export default {
   data() {
     return {
       index: 0,
+      sound: null, // For storing the audio element
+      isPlaying: false, // To track play/pause state
       logo: require('@/assets/logo.svg'),
       logoUrl: 'https://www.facebook.com/p/Skull-Darts-71-100091328505582/?paipv=0&eav=AfbEQcnK0hrl5AlWq-9Fz-R8o1uA_m8gPtoaNvWGt4tS05H5GpBvBsKNRuX0Zbg9LJQ&_rdr',
       activePage: 0,
@@ -31,14 +35,6 @@ export default {
           url: 'https://www.facebook.com/profile.php?id=100089758185054',
         },
       ],
-      // tables: {
-      //   0: '0',
-      //   1: '1',
-      //   2: '2',
-      //   3: '3',
-      //   4: '4',
-      //   5: '5',
-      // },
       pages: [
         // HOME PAGE
         {
@@ -78,6 +74,31 @@ export default {
         }
       ],
       pageDetails: 0,
+    }
+
+  },
+  created() {
+    // Instantiate the audio object and autoplay
+    this.sound = new Audio(require('@/assets/ev-chistr-Ta-Laou.mp3'));
+    this.sound.addEventListener('ended', this.restartSong);
+  },
+  methods: {
+    togglePlayPause() {
+      if (this.isPlaying) {
+        this.sound.pause();
+      } else {
+        this.sound.play().catch(error => console.error("Audio play failed", error));
+      }
+      this.isPlaying = !this.isPlaying;
+    },
+    restartSong() {
+      this.sound.currentTime = 0;
+      this.sound.play().catch(error => console.error("Une erreur est survenue", error));
+    },
+  },
+  beforeDestroy() {
+    if (this.sound) {
+      this.sound.removeEventListener('ended', this.restartSong);
     }
   }
 }
