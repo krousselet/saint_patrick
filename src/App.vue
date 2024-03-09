@@ -71,6 +71,42 @@ export default {
               bonus: 'Un kilt = une boisson offerte !',
             }
           ],
+        },
+        // INFORMATIONS PAGE
+        {
+          link: {
+            url: '#',
+            target: 'Législation'
+          },
+          pageTitle: 'Il va sans dire que :',
+          pageContent: [
+            {
+              titleAlcohol: 'Protection des mineurs et répression de l\'ivresse publique',
+              paragraphAlcoholOne: 'Il est interdit de vendre de l\'alcool à des mineurs de moins de dix-huit ans',
+              paragraphAlcoholTwo: 'La personne qui délivre la boisson exige du client une preuve de sa majorité, notamment par la production d’une pièce d’identité. Il est interdit d\’offrir de l\’alcool à titre gratuit à des mineurs dans les débits de boissons et tous commerces ou lieux publics.',
+              lawArticleOne: 'CODE DE LA SANTÉ PUBLIQUE : ART.L. 3342-1, L.3353-3',
+              paragraphAlcoholThree: 'Il est interdit de ventre à crédit des boissons alcooliques.',
+              lawArticleTwo : 'CODE DE LA SANTÉ PUBLIQUE : ART.L. 3322-9, R.3353-5',
+              paragraphAlcoholFour: 'Il est interdit de se trouver en état d\'ivresse manifeste dans un lieu publique.',
+              lawArticleThree: 'CODE DE LA SANTÉ PUBLIQUE : ART.L.3341-1, R. 3353-1',
+              danger: 'Le non respect de ces interdictions est passible de ',
+              dangerSpan: 'POURSUITES JUDICIAIRES',
+            }
+          ],
+        },
+        {
+          link: {
+            url: '#',
+            target: 'Jeu'
+          },
+          pageTitle: 'Déroulement de l\'activité :',
+          pageContent: [
+            {
+              titleGame: 'Règles concernant le jeu : ',
+              paragraphGameOne: 'Au cours de la soirée, vous aurez l\'occasion de gagner une boisson offerte, par l\'intermédiaire d\'un petit jeu. Celui-ci sera signalé par une lumière et un signal sonore distinctifs.',
+              paragraphGameTwo: 'Bien entendu, vous n\'aurez droit qu\'à un seul essai, et si vous parvenez à mettre la fléchette dans le centre ou sa périphérie, vous gagnerez votre consommation.',
+            }
+          ],
         }
       ],
       pageDetails: 0,
@@ -111,7 +147,7 @@ body {
   height: 100vh;
 }
 
-h1,
+h1, h2,
 p {
   font-family: 'Irish Grover', system-ui;
   color: gold;

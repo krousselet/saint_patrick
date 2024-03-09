@@ -29,13 +29,8 @@
                 <source :src="item.videoUrl" type="video/mp4">
                 Votre navigateur ne supporte pas cette video.
             </video>
-            <p class="m-5" id="first-p">{{ item.heading + ' ' + item.text }}</p>
-            <div id="groups">
-                <ul id="list">
-                    <li v-for="group in groups" :key="group.url"><img class="img-fluid logo" :src="group.imageUrl"
-                            :alt="'image d\'un logo'" @click.prevent="openNewTab(group.url)">
-                    </li>
-                </ul>
+            <div class="catch-container">
+                 <p class="m-5" id="first-p">{{ item.heading + ' ' + item.text }}</p>
             </div>
         </div>
         <div v-if="activePage === 1" id="details">
@@ -47,15 +42,64 @@
                 </p>
             </div>
             <img class="img-fluid" :src="pages[1].link.url" :alt="'image d\'un logo'" id="leprechaun_playing">
-            <div id="groups" class="m-5">
-                <ul id="list">
-                    <li v-for="group in groups" :key="group.url"><img class="img-fluid logo m-2" :src="group.imageUrl"
-                            :alt="'image d\'un logo'" @click.prevent="openNewTab(group.url)">
-                    </li>
-                </ul>
+        </div>
+        <div v-if="activePage === 2" id="informations">
+            <div class="container" v-for="(item, index) in pages[2].pageContent" :key="index" :id="index">
+                <div id="title-container" class="appear-1">
+                    <h2>{{ item.titleAlcohol }}</h2>
+                </div>
+                <div id="law">
+                    <div id="paragraph-alcohol-one" class="my-3 appear-2">
+                        <p class="justify">{{ item.paragraphAlcoholOne }}</p>
+                    </div>
+                    <div id="paragraph-alcohol-one-details" class="my-1 appear-3">
+                        <p class="justify">{{ item.paragraphAlcoholTwo }}</p>
+                    </div>
+                    <div id="law-article" class="my-1 appear-4">
+                        <p>{{ item.lawArticleOne }}</p>
+                    </div>
+                    <div id="paragraph-alcohol-three" class="my-3 appear-5">
+                        <p class="justify"> {{ item.paragraphAlcoholThree }}</p>
+                    </div>
+                    <div id="law-article" class="my-1 appear-6">
+                        <p>{{ item.lawArticleTwo }}</p>
+                    </div>
+                    <div id="paragraph-alcohol-four" class="my-3 appear-7">
+                        <p>{{ item.paragraphAlcoholFour }}</p>
+                    </div>
+                    <div id="law-article" class="my-1 appear-8">
+                        <p>{{ item.lawArticleThree }}</p>
+                    </div>
+                    <div id="danger" class="my-3 appear-9">
+                        <p>{{ item.danger }}<span id="danger-span" class="appear-10">{{ item.dangerSpan }}</span></p>
+                    </div>
+                </div>
             </div>
         </div>
+        <div v-if="activePage === 3" id="jeu">
+            <div class="container" v-for="(item, index) in pages[3].pageContent" :key="index" :id="index">
+                <div id="title-container" class="appear-1">
+                    <h2>{{ item.titleGame }}</h2>
+                </div>
+                <div id="paragraph-game-one" class="my-5 appear-2">
+                    <p class="justify">{{ item.paragraphGameOne }}</p>
+                </div>
+                <div id="paragraph-game-two" class="appear-3">
+                    <p class="justify">{{ item.paragraphGameTwo }}</p>
+                </div>
+                </div>
+
+            </div>
+        <!-- UNOFFICIAL FOOTER -->
+        <div id="groups" class="m-5">
+            <ul id="list">
+                <li v-for="group in groups" :key="group.url"><img class="img-fluid logo m-2" :src="group.imageUrl"
+                        :alt="'image d\'un logo'" @click.prevent="openNewTab(group.url)">
+                </li>
+            </ul>
+        </div>
     </div>
+    
 </template>
 
 <script>
@@ -100,22 +144,97 @@ export default {
         }
     },
     emits: ['toggle-play-pause']
-    // methods: {
-    //     togglePlayPause() {
-    //         if (this.isPlaying) {
-    //             this.sound.pause();
-    //             this.isPlaying = false;
-    //         } else {
-    //             this.sound.play().then(() => {
-    //                 this.isPlaying = true;
-    //             }).catch(error => console.error("Une erreur est survenue", error));
-    //         }
-    //     },
-    // }
 }
 </script>
 
 <style scoped>
+/* ***** LAW DIV *****/
+
+.appear-1 {
+    opacity: 0;
+    animation: appear .5s .5s linear forwards;
+}
+
+.appear-2 {
+    opacity: 0;
+    animation: appear .5s .8s linear forwards;
+}
+
+.appear-3 {
+    opacity: 0;
+    animation: appear .5s 1.1s linear forwards;
+}
+
+.appear-4 {
+    opacity: 0;
+    animation: appear .5s 1.4s linear forwards;
+}
+
+.appear-5 {
+    opacity: 0;
+    animation: appear .5s 1.7s linear forwards;
+}
+
+.appear-6 {
+    opacity: 0;
+    animation: appear .5s 2s linear forwards;
+}
+
+.appear-7 {
+    opacity: 0;
+    animation: appear .5s 2.3s linear forwards;
+}
+
+.appear-8 {
+    opacity: 0;
+    animation: appear .5s 2.5s linear forwards;
+}
+
+.appear-9 {
+    opacity: 0;
+    animation: appear .5s 2.8s linear forwards;
+}
+
+.appear-10 {
+    opacity: 0;
+    animation: appear .5s 3.1s linear forwards;
+}
+
+.catch-container {
+    overflow-x: hidden;
+}
+
+h2 {
+    animation: appear .5s .5s forwards, colorize .5s .5s ease forwards appear .5s .5s linear forwards;
+}
+
+#law {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    animation: appear .5s .5s forwards;
+}
+
+#paragraph-one-alcohol {
+    animation: left .5s 1s forwards;
+}
+
+.law-article {
+    text-align: right !important;
+    display: flex !important;
+    justify-content: right !important;
+    align-items: center !important;
+}
+
+#danger-span {
+    color: red;
+}
+
+
+
+
 .btn,
 .btn-success,
 .btn-danger {
@@ -152,6 +271,10 @@ export default {
 
 .border-radius {
     border-radius: 7px;
+}
+
+.justify {
+    text-align: justify;
 }
 
 /* MEDIAS QUERIES */
