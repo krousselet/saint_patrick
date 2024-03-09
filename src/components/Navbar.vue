@@ -36,7 +36,7 @@
         <div v-if="activePage === 1" id="details">
             <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-left">
             <img src="../assets/clover.webp" alt="image d'un trèfle" id="clover-right">
-            <div class="container">
+            <div class="container-fluid">
                 <p v-for="(item, index) in pages[1].pageContent[index]" :key="index" :id="index">
                     {{ item }}
                 </p>
@@ -44,7 +44,7 @@
             <img class="img-fluid" :src="pages[1].link.url" :alt="'image d\'un logo'" id="leprechaun_playing">
         </div>
         <div v-if="activePage === 2" id="informations">
-            <div class="container" v-for="(item, index) in pages[2].pageContent" :key="index" :id="index">
+            <div class="container-fluid" v-for="(item, index) in pages[2].pageContent" :key="index" :id="index">
                 <div id="title-container" class="appear-1">
                     <h2>{{ item.titleAlcohol }}</h2>
                 </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div v-if="activePage === 3" id="jeu">
-            <div class="container" v-for="(item, index) in pages[3].pageContent" :key="index" :id="index">
+            <div class="container-fluid" v-for="(item, index) in pages[3].pageContent" :key="index" :id="index">
                 <div id="title-container" class="appear-1">
                     <h2>{{ item.titleGame }}</h2>
                 </div>
